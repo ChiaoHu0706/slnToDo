@@ -1,0 +1,49 @@
+﻿@model IEnumerable<prjToDo.Models.tTodo>
+
+@{
+    ViewBag.Title = "代辦事項";
+}
+
+<h2>代辦事項</h2>
+
+<p>
+    @Html.ActionLink("代辦事項新增", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            編號
+        </th>
+        <th>
+            標題
+        </th>
+        <th>
+            重要層級
+        </th>
+        <th>
+            結案日期
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @item.fId
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fLevel)
+        </td>
+        <td>
+            @DateTime.Parse(item.fDate.ToString()).ToShortDateString()
+        </td>
+        <td>
+            @Html.ActionLink("文字連結", "動作方法", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
